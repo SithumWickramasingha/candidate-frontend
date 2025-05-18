@@ -1,0 +1,103 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  padding: 0;
+}
+
+/* For the blur effect when modal is open */
+.modal-open {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.button-primary {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.button-secondary {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.button-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Global tag styles */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.tag-green {
+  background-color: #46a758;
+  color: white;
+}
+
+.tag-blue {
+  background-color: #3694ff;
+  color: white;
+}
+
+.tag-purple {
+  background-color: #9747ff;
+  color: white;
+}
+
+.tag-orange {
+  background-color: #fd853a;
+  color: white;
+}
+
+.tag-teal {
+  background-color: #12b5b0;
+  color: white;
+}
+
+/* Global star rating styles */
+.rating {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.star {
+  color: #ffc107;
+  margin-right: 4px;
+}
