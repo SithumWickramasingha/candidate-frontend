@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import Modal from "./Modal";
+import axios from "axios";
+import { useEffect } from "react";
 
-const AddCandidateModal = ({isOpen, onClose, onSave}) => {
-  
+const AddCandidateModal = ({ isOpen, onClose, onAdd, onUpdate, candidateToEdit}) => {
   const initialState = {
     name: '',
     stage: 'Applying Period',
@@ -14,6 +15,22 @@ const AddCandidateModal = ({isOpen, onClose, onSave}) => {
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (candidateToEdit) {
+      setFormData({
+        name: candidateToEdit.name,
+        stage: candidateToEdit.stage,
+        appliedAt: new Date(candidateToEdit.appliedAt).toISOString().split('T')[0],
+        overall: candidateToEdit.overall,
+        isReferred: candidateToEdit.isReferred,
+        hasAssessment: candidateToEdit.hasAssessment
+      });
+    } else {
+      setFormData(initialState);
+    }
+  }, [candidateToEdit]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -23,31 +40,64 @@ const AddCandidateModal = ({isOpen, onClose, onSave}) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Format the date properly
-    const date = new Date(formData.appliedAt);
-    const formattedDate = `${date.getDate()} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][date.getMonth()]}, ${date.getFullYear()}`;
-    
-    const newCandidate = {
-      ...formData,
-      id: Date.now(),
-      appliedAt: formattedDate
-    };
-    
-    onSave(newCandidate);
-    setFormData(initialState);
-    onClose();
+    setLoading(true);
+
+    try {
+      const payload = {
+        candidate_name: formData.name,
+        candidate_stage: formData.stage,
+        application_date: formData.appliedAt,
+        overall_score: parseFloat(formData.overall),
+        isReferred: formData.isReferred,
+        hasAssessment: formData.hasAssessment
+      };
+
+      if(candidateToEdit){
+        await axios.put(`http://172.20.10.4:5000/api/candidates/${candidateToEdit.id}`, payload);
+
+        const updatedCandidate = {
+          ...formData,
+          id: candidateToEdit.id,
+          appliedAt: new Date(formData.appliedAt).toLocaleDateString('en-GB', {
+            day: '2-digit', month: 'short', year: 'numeric'
+          }).replace(/ /g, ' ')
+        };
+
+        onUpdate(updatedCandidate);
+      }else{
+        const response = await axios.post("http://172.20.10.4:5000/api/candidates/", payload);
+
+        const newCandidate = {
+          ...formData,
+          id: response.data.id || Date.now(), // Fallback if backend doesn’t return ID
+          appliedAt: new Date(formData.appliedAt).toLocaleDateString('en-GB', {
+            day: '2-digit', month: 'short', year: 'numeric'
+          }).replace(/ /g, ' ')
+        };
+
+        onAdd(newCandidate); 
+      }
+
+      
+      setFormData(initialState);
+      onClose();
+
+    } catch (error) {
+      console.error("Error saving candidate:", error);
+      alert("Failed to save candidate. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-
-
-  return(
-        <Modal isOpen={isOpen} onClose={onClose}>
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
       <div className="add-candidate-modal">
         <h2>Add New Candidate</h2>
         <form onSubmit={handleSubmit}>
+          {/* Input Fields */}
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
@@ -95,7 +145,7 @@ const AddCandidateModal = ({isOpen, onClose, onSave}) => {
               name="overall"
               min="1"
               max="5"
-              step="0.5"
+              step="0.1"
               value={formData.overall}
               onChange={handleChange}
               required
@@ -125,17 +175,17 @@ const AddCandidateModal = ({isOpen, onClose, onSave}) => {
           </div>
 
           <div className="modal-actions">
-            <button type="button" className="btn btn-cancel" onClick={onClose}>
+            <button type="button" className="btn btn-cancel" onClick={onClose} disabled={loading}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-save">
-              Save Candidate
+            <button type="submit" className="btn btn-save" disabled={loading}>
+              {loading ? "Saving..." : "Save Candidate"}
             </button>
           </div>
         </form>
       </div>
     </Modal>
   );
-}
+};
 
 export default AddCandidateModal;

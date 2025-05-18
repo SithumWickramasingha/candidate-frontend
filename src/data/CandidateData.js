@@ -2,7 +2,7 @@ const CandidateData = [
    {
     id: 1,
     name: "Marlon Reynolds",
-    image: "/avatars/marlon.jpg",
+    image: null,
     appliedAt: "29 Oct, 2023",
     overall: 3.5,
     stage: "Applying Period",
@@ -11,8 +11,8 @@ const CandidateData = [
   },
   {
     id: 2,
-    name: "Regina Hane",
-    image: null, // Will use initial instead
+    name: "Segina Hane",
+    image: null, 
     appliedAt: "29 Oct, 2023",
     overall: 2,
     stage: "Applying Period",
@@ -32,7 +32,7 @@ const CandidateData = [
   {
     id: 4,
     name: "Jaime Anderson",
-    image: "/avatars/jaime.jpg",
+    image: null,
     appliedAt: "29 Oct, 2023",
     overall: 0,
     stage: "Applying Period",
@@ -42,7 +42,7 @@ const CandidateData = [
   {
     id: 5,
     name: "Kristi Sipes",
-    image: "/avatars/kristi.jpg",
+    image: null,
     appliedAt: "20 Oct, 2023",
     overall: 3.5,
     stage: "Screening",
@@ -52,7 +52,7 @@ const CandidateData = [
   {
     id: 6,
     name: "Randy Dibbert",
-    image: "/avatars/randy.jpg",
+    image: null,
     appliedAt: "18 Oct, 2023",
     overall: 3.5,
     stage: "Screening",
@@ -92,7 +92,7 @@ const CandidateData = [
   {
     id: 10,
     name: "Cameron Dickens",
-    image: "/avatars/cameron.jpg",
+    image: null,
     appliedAt: "03 Sep, 2023",
     overall: 4,
     stage: "Interview",
@@ -102,7 +102,7 @@ const CandidateData = [
   {
     id: 11,
     name: "Merle Vandervort",
-    image: "/avatars/merle.jpg",
+    image: null,
     appliedAt: "09 Sep, 2023",
     overall: 4,
     stage: "Interview",
@@ -112,7 +112,7 @@ const CandidateData = [
   {
     id: 12,
     name: "Jasmine Wiza",
-    image: "/avatars/jasmine.jpg",
+    image: null,
     appliedAt: "10 Sep, 2023",
     overall: 0,
     stage: "Interview",
@@ -122,7 +122,7 @@ const CandidateData = [
   {
     id: 13,
     name: "Lola Kirlin",
-    image: "/avatars/lola.jpg",
+    image: null,
     appliedAt: "03 Sep, 2023",
     overall: 4.5,
     stage: "Test",
@@ -132,7 +132,7 @@ const CandidateData = [
   {
     id: 14,
     name: "Virgil Larkin",
-    image: "/avatars/virgil.jpg",
+    image: null,
     appliedAt: "03 Sep, 2023",
     overall: 0,
     stage: "Test",

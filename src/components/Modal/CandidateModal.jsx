@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import { Star, Edit2, Trash2 } from 'lucide-react';
 
 const CandidateModal = ({isOpen, onClose, candidate, onEdit, onDelete}) => {
+  console.log("from modal",candidate);
 
   if (!candidate) return null;
 

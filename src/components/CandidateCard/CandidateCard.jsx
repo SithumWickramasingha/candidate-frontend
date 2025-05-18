@@ -3,7 +3,7 @@ import "./CandidateCard.css";
 import { Star, MoreHorizontal, User } from 'lucide-react';
 
 const CandidateCard = ({candidate, onClick}) => {
-
+  console.log("from candidate card",candidate);
   const getInitials = (name) => {
     return name
       .split(' ')

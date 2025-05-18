@@ -2,7 +2,7 @@ import React from "react";
 import "./KanbanBoard.css";
 import CandidateCard from "../CandidateCard/CandidateCard";
 const KanbanBoard = ({candidates, onCandidateClick}) => {
-  console.log(candidates);
+  console.log("candidate",candidates);
 
   const stages = [
     { name: 'Applying Period', color: 'orange', count: candidates.filter(c => c.stage === 'Applying Period').length },
