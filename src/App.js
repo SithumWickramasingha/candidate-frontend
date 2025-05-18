@@ -5,7 +5,8 @@ import Header from './components/Header/Header';
 import JobDetailsBar from './components/JobDetailsBar/JobDetailsBar';
 import SideBar from './components/SideBar/SideBar';
 import JobInfoBar from './components/JobInfoBar/JobInforBar';
-
+import TabNavigation from './components/TabNavigation/TabNavigation';
+import FilterOptions from './components/FilterOptions/FilterOptions';
 function App() {
   return (
     <div className="App">
@@ -13,8 +14,10 @@ function App() {
         <Header/>
         <JobDetailsBar/>
         <JobInfoBar/>
-        <SideBar/>
         
+        <TabNavigation/>
+        <FilterOptions/>
+        <SideBar/>
       </header>
     </div>
   );
