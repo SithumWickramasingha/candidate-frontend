@@ -1,0 +1,155 @@
+.header {
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #0f172a;
+  color: white;
+  border-bottom: 1px solid #1e293b;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 24px;
+}
+
+.logo-symbol {
+  margin-right: 4px;
+}
+
+.nav-section {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-item {
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  background-color: #1e293b;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tab {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #334155;
+}
+
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background-color: #e11d48;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fbbf24;
+  color: #0f172a;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-button:hover {
+  background-color: #334155;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: #e11d48;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #334155;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
