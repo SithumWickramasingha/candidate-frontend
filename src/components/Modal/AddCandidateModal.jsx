@@ -3,6 +3,7 @@ import "./Modal.css";
 import Modal from "./Modal";
 import axios from "axios";
 import { useEffect } from "react";
+import swal from "sweetalert";
 
 const AddCandidateModal = ({ isOpen, onClose, onAdd, onUpdate, candidateToEdit}) => {
   const initialState = {
@@ -66,6 +67,7 @@ const AddCandidateModal = ({ isOpen, onClose, onAdd, onUpdate, candidateToEdit})
         };
 
         onUpdate(updatedCandidate);
+        swal("Sucess","Updated", "success");
       }else{
         const response = await axios.post("http://172.20.10.4:5000/api/candidates/", payload);
 
@@ -78,6 +80,7 @@ const AddCandidateModal = ({ isOpen, onClose, onAdd, onUpdate, candidateToEdit})
         };
 
         onAdd(newCandidate); 
+        swal("Added Successfully","New Candidate Added to Database", "success");
       }
 
       

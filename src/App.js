@@ -13,6 +13,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import CandidateModal from './components/Modal/CandidateModal';
 import AddCandidateModal from './components/Modal/AddCandidateModal';
+import swal from 'sweetalert';
 
 function App() {
 
@@ -41,9 +42,11 @@ function App() {
       }));
       console.log("formatted ",formattedCandidates);
       setCandidates(formattedCandidates);
+      swal("Succuss","Fetched All the candidates","success")
     })
     .catch((error) => {
       console.error('Error fetching candidates:', error);
+      swal("Error","Error fetching candidates", "error");
     });
   }, []);
 
@@ -92,9 +95,11 @@ function App() {
     .then(() => {
       setCandidates(candidates.filter((candidate) => candidate.id !== candidateId));
       setShowCandidateModal(false);
+      swal("Delete Successfully","Cadidate is deleted", "success");
     })
     .catch((error) =>{
       console.log('Error deleting candidate', error);
+      swal("Error","Couldn't delete","error");
     });
     
   };
